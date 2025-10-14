@@ -1,0 +1,865 @@
+
+p {
+  font-family: sans-serif;
+}
+
+
+body {
+  font-family: 'Playfair Display', 'noto sans';
+  margin: 0;
+  padding: 0;
+}
+
+*a {
+  text-decoration: none; /* Remove underline from links */
+  color: inherit;        /* Inherit color from parent */
+}
+
+/* WhatsApp floating button */
+.whatsapp_float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  font-size: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Pulse effect using ::after */
+.whatsapp_float::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  background-color: rgba(37, 211, 102, 0.5); /* lighter green */
+  animation: pulse 2s infinite;
+  z-index: -1; /* behind the button */
+}
+
+/* Keyframes for pulse */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+.whatsapp_float:hover {
+transform: scale(1.1);
+}
+
+/* navbar styles.................................................*/
+.nav-link.active {
+color: rgb(255, 255, 255) !important;
+font-weight: bold;
+}
+
+.navbar-toggler {
+  border: none; /* remove border */
+  background: none; /* remove background */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23A9824D' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+
+.navbar {
+  background-color: #0E1218;
+  border-bottom: #A9824D 1px solid;
+}
+
+.offcanvas {
+  background-color: rgba(29, 31, 34, 0.3) !important; /* lighter & more transparent */
+  backdrop-filter: blur(8px); /* slightly stronger blur for contrast */
+  color: #A9824D;
+  border: none;
+}
+
+
+.nav-link {
+  color: #A9824D !important;
+}
+
+.contact-btn {
+  background-color: #A9824D;
+  color: black;
+  border-radius: 0%;
+  text-decoration: none;
+  font-family: sans-serif;
+  clip-path: polygon(
+  3% 0%, 97% 0%,    /* top edge corners */
+  100% 15%, 100% 85%, /* right side small chamfer */
+  97% 100%, 3% 100%,  /* bottom corners */
+  0% 85%, 0% 15%      /* left side small chamfer */
+);
+}
+
+.contact-btn:hover {
+  background-color: #c79d63;
+  color: #0E1218;
+}
+
+
+.navbar-brand img {
+  max-height: 50px; /* adjust as needed */
+}
+
+/* Ensure header elements stack correctly */
+.header {
+  position: relative;
+}
+
+/* Dropdown menu styles................................................. */
+/* Show dropdown menu on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 2rem; /* keeps it aligned */
+  border: none;
+}
+/* Dropdown menu styles End................................................. */
+
+
+
+
+/* ........................................................................hero styles .............................................................*/
+.hero {
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* place it behind the text */
+  overflow: hidden;
+}
+
+.hero-bg video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(20%);
+}
+
+.hero-info {
+  position: absolute;
+  top: 50%;                  /* vertically center */
+  left: 0;
+  width: 100%;               /* span full width */
+  transform: translateY(-50%);
+  color: #A9824D;
+}
+
+.hero-info .container {
+  padding-left: 1rem;        /* Bootstrap container default padding */
+  padding-right: 1rem;
+}
+
+.hero-info ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  font-family: sans-serif;
+  margin-top: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.hero-info ul li {
+  font-size: 0.95rem;  /* slightly smaller text */
+  white-space: nowrap; /* keeps each li in one line */
+  color: #fff;
+}
+
+.tick-icon {
+  color: #A9824D;
+  margin-right: 6px;
+}
+
+/* ---------------- Responsive: Stack list vertically on mobile ---------------- */
+@media (max-width: 767.98px) {
+  .hero-info ul {
+    flex-direction: column; /* stack items */
+    gap: 0.8rem;
+  }
+
+  .hero-info ul li {
+    white-space: normal; /* allow wrapping */
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .hero-info span.display-2 {
+    font-size: 2rem; /* reduce heading size */
+  }
+}
+/* ......................................................................hero styles End ............................................................*/
+
+
+
+
+/* .......................................................................about section styles start ....................................................*/
+.about-section {
+  background-color: #0E1218; /* light background color */
+  padding: 6rem 0;
+  border-bottom: 1px solid transparent; /* Must be transparent */
+  border-image: linear-gradient(to right, #0E1218, #A9824D, #0E1218);
+  border-image-slice: 1;
+}
+
+.about-section .title {
+  color: #A9824D;
+}
+.about-section p {
+  color: white;
+  font-family: sans-serif;
+}
+
+.about-section li {
+  font-family: sans-serif;
+}
+
+/* Apply hover effect only on screens ≥768px */
+@media (min-width: 768px) {
+  .stats-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  }
+}
+/* Tap effect only on mobile */
+@media (max-width: 767px) {
+  .stats-box:active {
+    transform: scale(0.97); /* slight shrink on tap */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+}
+
+
+.tick-icon {
+  margin-right: 6px;   /* gap between ✔ and its text */
+}
+
+li span + span {
+  margin-left: 20px;   /* gap between the two ticked points */
+}
+
+.btn-custom {
+    background-color: #A9824D;
+    color: black;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    font-family: sans-serif;
+    clip-path: polygon(
+    3% 0%, 97% 0%,    /* top edge corners */
+    100% 15%, 100% 85%, /* right side small chamfer */
+    97% 100%, 3% 100%,  /* bottom corners */
+    0% 85%, 0% 15%      /* left side small chamfer */
+    );
+
+  }
+
+  .btn-custom:hover {
+    background-color: #c79d63;
+  }
+
+/* Fade and slide in from right */
+@keyframes fadeInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade and slide out to right */
+@keyframes fadeOutToRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+}
+
+/* initial hidden state */
+.about-section .col-md-6 {
+  opacity: 0;
+  transform: translateX(80px);
+}
+
+/* fade in animation */
+.about-section .fade-in-right {
+  animation: fadeInFromRight 1s ease forwards;
+}
+
+/* fade out animation */
+.about-section .fade-out-right {
+  animation: fadeOutToRight 1s ease forwards;
+}
+
+  /* ................................................................about section styles end .........................................................................*/
+
+
+
+  /* .......................................................................vision section styles start ....................................................*/
+  .vision-section {
+    background-color: #0E1218;
+    padding: 6rem 0;
+    border-bottom: 1px solid transparent; /* Must be transparent */
+    border-image: linear-gradient(to right, #0E1218, #A9824D, #0E1218);
+    border-image-slice: 1;
+  }
+  .vision-section h2 {
+    color: #A9824D;
+  }
+
+  .vision-section h1 {
+    font-family: sans-serif;
+  }
+  
+  /* Align all boxes in one line like the image */
+.vision-section .vision-row {
+  display: flex;
+  justify-content: center; /* center the whole row */
+  align-items: stretch;
+  gap: 2rem; /* space between boxes */
+  flex-wrap: nowrap; /* single line */
+}
+
+/* Each card */
+.vision-section .feature-box {
+  background-color: #fff;
+  border-radius: 20px;
+  width: 250px;
+  height: 250px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #0E1218;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%);
+}
+
+.vision-section .feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Icon + text styling */
+.vision-section i {
+  font-size: 2.5rem;
+  color: #A9824D;
+  margin-bottom: 1rem;
+}
+
+/* For smaller screens: allow horizontal scroll instead of wrap */
+@media (max-width: 992px) {
+  .vision-section .vision-row {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 1rem;
+  }
+
+  .vision-section .feature-box {
+    flex: 0 0 auto;
+  }
+}
+
+/* Fade and slide in from left */
+@keyframes fadeInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade and slide out to left */
+@keyframes fadeOutToLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+}
+
+/* initial hidden state for feature boxes */
+.vision-section .feature-box {
+  opacity: 0;
+  transform: translateX(-80px);
+}
+
+/* fade in animation */
+.vision-section .fade-in-left {
+  animation: fadeInFromLeft 1s ease forwards;
+}
+
+/* fade out animation */
+.vision-section .fade-out-left {
+  animation: fadeOutToLeft 1s ease forwards;
+}
+ /* .......................................................................vision section styles end ....................................................*/
+
+
+
+  /* .......................................................................model section styles start ....................................................*/
+.model-section {
+  padding: 6rem 0;
+  background-color: #0E1218;
+  border-bottom: 1px solid transparent; /* Must be transparent */
+  border-image: linear-gradient(to right, #0E1218, #A9824D, #0E1218);
+  border-image-slice: 1;
+}
+
+.model-section h2 {
+  color: #A9824D;
+  margin-bottom: 4rem;
+}
+
+.model-section p {
+  font-family: sans-serif;
+}
+
+/* Timeline container */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Center line that grows */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 0;
+  background-color: #fff;
+  z-index: 0;
+  transition: height 0.2s linear, background-color 0.2s linear;
+}
+
+/* Timeline items */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 1rem 2rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+
+.timeline-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Left/Right positioning */
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+/* Timeline content box */
+.timeline-content {
+  border: solid 1px white;
+  color: #A9824D;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  border-radius: none
+}
+
+/* Dot/circle */
+.dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  top: 15px;
+  right: -10px;
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+
+.timeline-item.right .dot {
+  left: -10px;
+  right: auto;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .timeline-item, .timeline-item.right {
+    width: 100%;
+    left: 0;
+    padding-left: 50px;
+    padding-right: 0;
+  }
+  .dot {
+    left: 10px !important;
+    right: auto;
+  }
+  .timeline-line {
+    left: 20px;
+    transform: none;
+  }
+}
+/*........................................................................furure section start...............................................................................................*/
+.future-section{
+  padding: 6rem 0;
+  background-color: #0E1218;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(to right, #0E1218, #A9824D, #0E1218);
+  border-image-slice: 1;
+}
+
+.future-section h2 {
+  color: #A9824D;
+  cursor: pointer;
+}
+
+.future-section h1 {
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+.carousel-item p,
+.mobile-carousel p {
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+.carousel-item img,
+.mobile-carousel img {
+  border-radius: 10px;
+  clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%);
+  cursor: pointer;
+}
+
+.carousel-item .btn,
+.mobile-carousel .btn {
+  background-color: #A9824D;
+  color: black;
+  font-family: sans-serif;
+  clip-path: polygon(
+    3% 0%, 97% 0%, 100% 15%, 100% 85%, 97% 100%, 3% 100%, 0% 85%, 0% 15%
+  );
+  cursor: pointer;
+}
+
+.carousel .btn:hover {
+  background-color: #c79d63;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px){
+  .mobile-carousel img {
+    margin-bottom: 1.5rem;
+  }
+  .mobile-carousel h2,
+  .mobile-carousel p {
+    text-align: left;
+  }
+}
+
+
+/* ---- Animation Keyframes ---- */
+@keyframes fadeInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutToRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+}
+
+/* ---- Initial hidden state only for section titles ---- */
+.future-section h2,
+.future-section h1 {
+  opacity: 0;
+  transform: translateX(80px);
+}
+
+/* ---- Animation classes ---- */
+.future-section .fade-in-right {
+  animation: fadeInFromRight 1s ease forwards;
+}
+
+.future-section .fade-out-right {
+  animation: fadeOutToRight 1s ease forwards;
+}
+
+/* ---- Optional stagger for nicer entry ---- */
+.future-section h2.fade-in-right {
+  animation-delay: 0.1s;
+}
+
+.future-section h1.fade-in-right {
+  animation-delay: 0.3s;
+}
+
+
+
+
+/* ................................................................join section start .............................................*/
+.join-section {
+  padding: 10rem 0;
+  background-color: #0E1218;
+}
+
+.join-section h2 {
+  color: #A9824D;
+}
+
+.join-section .btn {
+  background-color: #A9824D;
+  color: black;
+  clip-path: polygon(
+  3% 0%, 97% 0%,    /* top edge corners */
+  100% 15%, 100% 85%, /* right side small chamfer */
+  97% 100%, 3% 100%,  /* bottom corners */
+  0% 85%, 0% 15%      /* left side small chamfer */
+);
+}
+
+.join-section .btn:hover {
+  background-color: #c79d63;
+}
+
+/* footer section start */
+.footer-section {
+  padding: 6rem 0;
+}
+
+/* make sure all columns align from the top */
+.footer-section .row {
+  display: flex;
+  align-items: flex-start !important;
+}
+
+/* Force logo to left align on all screen sizes */
+.footer-section .footer-logo {
+  display: block !important;
+  margin: 0 !important;          /* remove auto centering */
+  padding: 0 !important;
+  max-height: 80px;
+  text-align: left !important;    /* just in case */
+  align-self: flex-start !important; /* key: aligns logo in flex column */
+}
+
+
+/* left align all text inside left column */
+.footer-section .col-md-5 {
+  text-align: left !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* fix column alignment and spacing */
+.footer-section .col-md-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ensure headings align perfectly */
+.footer-section h4 {
+  color: #A9824D;
+  margin-top: 0;       /* remove extra top space */
+  margin-bottom: 1.5rem;
+  line-height: 1.2;    /* tighter spacing */
+}
+
+/* social icons */
+.social-media-icons {
+  justify-content: flex-start !important;
+  gap: 1.2rem;
+}
+
+.social-media-icons a i {
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #A9824D;
+}
+
+.social-media-icons a:hover i {
+  color: #0E1218;
+}
+
+.footer-section ul {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section i {
+  color: #A9824D;
+}
+
+.marquee-text-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+}
+
+.marquee-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marqueeMove 20s linear infinite;
+}
+
+.marquee-text {
+  font-size: 5rem; /* Bigger single line text */
+  font-weight: 700;
+  color: #0E1218;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* Keyframes for smooth continuous scrolling */
+@keyframes marqueeMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Optional: fade gradient on sides for smoother entry/exit */
+.marquee-text-wrapper::before,
+.marquee-text-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+}
+
+.marquee-text-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, white 0%, transparent 100%);
+}
+
+.marquee-text-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, white 0%, transparent 100%);
+}
+
+@media (max-width: 767.98px) {
+  .footer-section .col-md-5,
+  .footer-section .col-md-3 {
+    text-align: left !important;   /* left align text */
+    align-items: flex-start !important; /* left align flex items */
+  }
+
+  .footer-section h4 {
+    text-align: left !important;   /* left align headings */
+  }
+
+  .footer-section ul {
+    text-align: left !important;   /* left align list items */
+  }
+
+  .social-media-icons {
+    justify-content: flex-start !important; /* left align icons */
+  }
+}
+
+@media (max-width: 767.98px) {
+  .footer-section .footer-logo {
+    align-self: flex-start !important;
+  }
+}
+
+/* Fade in/out animation */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Initial hidden state */
+.footer-section {
+  opacity: 0;
+}
+
+/* Fade in */
+.footer-section.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Fade out */
+.footer-section.fade-out {
+  animation: fadeOut 1s ease forwards;
+}
