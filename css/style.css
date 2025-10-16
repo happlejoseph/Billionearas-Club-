@@ -1,19 +1,20 @@
 
 p {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 
 body {
-  font-family: 'Playfair Display', 'noto sans';
+  font-family: 'Bodoni Moda', serif;
   margin: 0;
   padding: 0;
 }
 
-*a {
+a {
   text-decoration: none; /* Remove underline from links */
   color: inherit;        /* Inherit color from parent */
 }
+
 
 /* WhatsApp floating button */
 .whatsapp_float {
@@ -99,6 +100,7 @@ font-weight: bold;
 
 .nav-link {
   color: #A9824D !important;
+  font-family: 'Poppins', sans-serif;
 }
 
 .contact-btn {
@@ -106,7 +108,7 @@ font-weight: bold;
   color: black;
   border-radius: 0%;
   text-decoration: none;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   clip-path: polygon(
   3% 0%, 97% 0%,    /* top edge corners */
   100% 15%, 100% 85%, /* right side small chamfer */
@@ -130,14 +132,28 @@ font-weight: bold;
   position: relative;
 }
 
-/* Dropdown menu styles................................................. */
-/* Show dropdown menu on hover */
-.nav-item.dropdown:hover .dropdown-menu {
-  display: block;
-  margin-top: 2rem; /* keeps it aligned */
-  border: none;
+/* Align button and nav links horizontally on large screens */
+@media (min-width: 992px) {
+  .offcanvas-body {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* keep everything aligned to the right */
+  }
+
+  .offcanvas-body .navbar-nav {
+    margin-bottom: 0; /* remove bottom spacing */
+  }
+
+  .offcanvas-body form {
+    margin-left: 1rem; /* add a bit of space between links and button */
+  }
 }
-/* Dropdown menu styles End................................................. */
+
+/* Change offcanvas close button color */
+.btn-close {
+  filter: invert(66%) sepia(35%) saturate(458%) hue-rotate(8deg) brightness(96%) contrast(91%);
+  /* This filter creates the #c79d63 gold tone */
+}
 
 
 
@@ -151,10 +167,10 @@ font-weight: bold;
 .hero-bg {
   position: absolute;
   top: 0;
-  left:0;
+  left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* place it behind the text */
+  z-index: -1;
   overflow: hidden;
 }
 
@@ -168,15 +184,15 @@ font-weight: bold;
 
 .hero-info {
   position: absolute;
-  top: 50%;                  /* vertically center */
+  top: 50%;
   left: 0;
-  width: 100%;               /* span full width */
+  width: 100%;
   transform: translateY(-50%);
   color: #A9824D;
 }
 
 .hero-info .container {
-  padding-left: 1rem;        /* Bootstrap container default padding */
+  padding-left: 1rem;
   padding-right: 1rem;
 }
 
@@ -185,15 +201,15 @@ font-weight: bold;
   justify-content: center;
   align-items: center;
   gap: 1.2rem;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin-top: 1.5rem;
   list-style: none;
   padding: 0;
 }
 
 .hero-info ul li {
-  font-size: 0.95rem;  /* slightly smaller text */
-  white-space: nowrap; /* keeps each li in one line */
+  font-size: 0.95rem;
+  white-space: nowrap;
   color: #fff;
 }
 
@@ -202,24 +218,34 @@ font-weight: bold;
   margin-right: 6px;
 }
 
-/* ---------------- Responsive: Stack list vertically on mobile ---------------- */
+/* ---------------- Responsive: Hide list on mobile & adjust title ---------------- */
 @media (max-width: 767.98px) {
   .hero-info ul {
-    flex-direction: column; /* stack items */
-    gap: 0.8rem;
-  }
-
-  .hero-info ul li {
-    white-space: normal; /* allow wrapping */
-    width: 100%;
-    text-align: center;
-    font-size: 0.9rem;
+    display: none !important; /* hide list on mobile */
   }
 
   .hero-info span.display-2 {
-    font-size: 2rem; /* reduce heading size */
+    font-size: 3rem; /* bigger title on mobile */
+    line-height: 1.2; /* adjust line spacing */
   }
 }
+
+/* === Hero title for iPads (Mini, Air, Pro) === */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1366px) {
+
+  .hero-info span.display-2 {
+    font-size: 3.5rem;         /* slightly smaller than desktop if needed */
+    line-height: 1.2;
+    max-width: 600px;          /* controls when text wraps */
+    white-space: normal;       /* allow wrapping */
+    display: block;
+    margin: 0 auto;            /* center horizontally */
+    text-align: center;        /* optional: center text */
+  }
+}
+
 /* ......................................................................hero styles End ............................................................*/
 
 
@@ -227,9 +253,9 @@ font-weight: bold;
 
 /* .......................................................................about section styles start ....................................................*/
 .about-section {
-  background-color: #0E1218; /* light background color */
-  padding: 6rem 0;
-  border-bottom: 1px solid transparent; /* Must be transparent */
+  background-color: #0E1218;
+  padding: 10rem 0;
+  border-bottom: 1px solid transparent;
   border-image: linear-gradient(to right, #0E1218, #A9824D, #0E1218);
   border-image-slice: 1;
 }
@@ -237,101 +263,80 @@ font-weight: bold;
 .about-section .title {
   color: #A9824D;
 }
+
 .about-section p {
   color: white;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .about-section li {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
+  color: gray;
 }
 
-/* Apply hover effect only on screens ≥768px */
-@media (min-width: 768px) {
-  .stats-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  }
-}
-/* Tap effect only on mobile */
-@media (max-width: 767px) {
-  .stats-box:active {
-    transform: scale(0.97); /* slight shrink on tap */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
-  }
+/* ✅ Tick List Style */
+.tick-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columns on large screens */
+  column-gap: 2rem;
+  row-gap: 1rem;
+  padding: 0;
+  margin: 0;
 }
 
+.tick-list li {
+  display: flex;
+  align-items: center;
+}
 
 .tick-icon {
-  margin-right: 6px;   /* gap between ✔ and its text */
+  color: #A9824D;
+  margin-right: 8px;
 }
 
-li span + span {
-  margin-left: 20px;   /* gap between the two ticked points */
+/* ✅ Mobile: Make ticks 1 column */
+@media (max-width: 767.98px) {
+  .tick-list {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    row-gap: 0.75rem;
+  }
 }
 
 .btn-custom {
-    background-color: #A9824D;
-    color: black;
-    padding: 0.5rem 1rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border: none;
-    font-family: sans-serif;
-    clip-path: polygon(
-    3% 0%, 97% 0%,    /* top edge corners */
-    100% 15%, 100% 85%, /* right side small chamfer */
-    97% 100%, 3% 100%,  /* bottom corners */
-    0% 85%, 0% 15%      /* left side small chamfer */
-    );
+  background-color: #A9824D;
+  color: black;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  clip-path: polygon(
+    3% 0%, 97% 0%,
+    100% 15%, 100% 85%,
+    97% 100%, 3% 100%,
+    0% 85%, 0% 15%
+  );
+}
 
-  }
+.btn-custom:hover {
+  background-color: #c79d63;
+}
 
-  .btn-custom:hover {
-    background-color: #c79d63;
-  }
-
-/* Fade and slide in from right */
+/* Animation for scroll effects (if you use them) */
 @keyframes fadeInFromRight {
-  0% {
-    opacity: 0;
-    transform: translateX(80px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  0% { opacity: 0; transform: translateX(80px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
-/* Fade and slide out to right */
-@keyframes fadeOutToRight {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(80px);
-  }
-}
-
-/* initial hidden state */
 .about-section .col-md-6 {
   opacity: 0;
   transform: translateX(80px);
 }
 
-/* fade in animation */
 .about-section .fade-in-right {
   animation: fadeInFromRight 1s ease forwards;
-}
-
-/* fade out animation */
-.about-section .fade-out-right {
-  animation: fadeOutToRight 1s ease forwards;
 }
 
   /* ................................................................about section styles end .........................................................................*/
@@ -341,7 +346,7 @@ li span + span {
   /* .......................................................................vision section styles start ....................................................*/
   .vision-section {
     background-color: #0E1218;
-    padding: 6rem 0;
+    padding: 10rem 0;
     border-bottom: 1px solid transparent; /* Must be transparent */
     border-image: linear-gradient(to right, #0E1218, #A9824D, #0E1218);
     border-image-slice: 1;
@@ -351,7 +356,7 @@ li span + span {
   }
 
   .vision-section h1 {
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
   
   /* Align all boxes in one line like the image */
@@ -392,16 +397,46 @@ li span + span {
   margin-bottom: 1rem;
 }
 
-/* For smaller screens: allow horizontal scroll instead of wrap */
+/* For smaller screens: stack vertically instead of horizontal scroll */
 @media (max-width: 992px) {
+  /* Stack feature boxes vertically and align left */
   .vision-section .vision-row {
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column; 
+    gap: 2.5rem;           /* spacing between boxes */
+    align-items: flex-start; /* align boxes to left */
+    justify-content: flex-start; 
+    overflow-x: visible;    
+    padding-bottom: 0;      
+    text-align: left;       /* left-align text */
   }
 
+  /* Make feature boxes bigger and responsive */
   .vision-section .feature-box {
-    flex: 0 0 auto;
+    flex: 0 0 auto;        
+    width: 95%;             /* responsive width */
+    max-width: 500px;       /* bigger max width */
+    margin: 0;              /* remove auto centering */
+    padding: 25px 30px;     /* more padding for bigger look */
+    font-size: 1rem;        /* optional: make text bigger */
+  }
+
+  /* Headings inside feature boxes */
+  .vision-section .feature-box h4 {
+    font-size: 1.25rem;    
+    margin-bottom: 0.8rem;
+  }
+
+  .vision-section .feature-box p {
+    font-size: 1rem;       
+    line-height: 1.5;
+  }
+
+
+  .vision-section h1 {
+    font-size: 1.2rem;   /* smaller font for mobile */
+    line-height: 1.3;    /* adjust line height */
+    margin-top: 0.8rem;  /* adjust top spacing */
   }
 }
 
@@ -450,7 +485,7 @@ li span + span {
 
   /* .......................................................................model section styles start ....................................................*/
 .model-section {
-  padding: 6rem 0;
+  padding: 10rem 0;
   background-color: #0E1218;
   border-bottom: 1px solid transparent; /* Must be transparent */
   border-image: linear-gradient(to right, #0E1218, #A9824D, #0E1218);
@@ -463,7 +498,8 @@ li span + span {
 }
 
 .model-section p {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
+  color: gray;
 }
 
 /* Timeline container */
@@ -570,13 +606,15 @@ li span + span {
 }
 
 .future-section h1 {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   cursor: pointer;
 }
 
 .carousel-item p,
 .mobile-carousel p {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-size: small;
+  color: gray;
   cursor: pointer;
 }
 
@@ -587,30 +625,31 @@ li span + span {
   cursor: pointer;
 }
 
-.carousel-item .btn,
-.mobile-carousel .btn {
-  background-color: #A9824D;
-  color: black;
-  font-family: sans-serif;
-  clip-path: polygon(
-    3% 0%, 97% 0%, 100% 15%, 100% 85%, 97% 100%, 3% 100%, 0% 85%, 0% 15%
-  );
-  cursor: pointer;
-}
+/* Mobile adjustments for more breathing room */
+@media (max-width: 767.98px) {
+  .mobile-carousel .mb-5 {
+    margin-bottom: 6rem; /* lots of space between items */
+  }
 
-.carousel .btn:hover {
-  background-color: #c79d63;
-}
-
-/* Mobile adjustments */
-@media (max-width: 767.98px){
   .mobile-carousel img {
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem; /* more space between image and heading/text */
   }
-  .mobile-carousel h2,
+
+  .mobile-carousel h2 {
+    margin-bottom: 1.5rem; /* space between heading and paragraph */
+  }
+
   .mobile-carousel p {
-    text-align: left;
+    line-height: 1.8; /* make text more readable */
   }
+
+  .future-section h1 {
+    font-size: 1.2rem; /* smaller font for mobile */
+    line-height: 1.3;  /* tighter line height for better readability */
+    margin-top: 0.8rem;  /* adjust spacing above */
+  }
+
+
 }
 
 
@@ -678,6 +717,7 @@ li span + span {
 .join-section .btn {
   background-color: #A9824D;
   color: black;
+  font-family: 'Poppins', sans-serif;
   clip-path: polygon(
   3% 0%, 97% 0%,    /* top edge corners */
   100% 15%, 100% 85%, /* right side small chamfer */
@@ -686,11 +726,15 @@ li span + span {
 );
 }
 
+.join-section p {
+  color: gray;
+}
+
 .join-section .btn:hover {
   background-color: #c79d63;
 }
 
-/* footer section start */
+/* footer section start ..........................................................................................................*/
 .footer-section {
   padding: 6rem 0;
 }
@@ -714,10 +758,11 @@ li span + span {
 
 /* left align all text inside left column */
 .footer-section .col-md-5 {
-  text-align: left !important;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: column; /* stack logo and text vertically */
+  justify-content: flex-start; /* align to top */
+  align-items: flex-start; /* align everything to the left */
+  gap: 1rem; /* optional spacing between logo and text */
 }
 
 /* fix column alignment and spacing */
@@ -751,7 +796,7 @@ li span + span {
 }
 
 .footer-section ul {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -862,4 +907,121 @@ li span + span {
 /* Fade out */
 .footer-section.fade-out {
   animation: fadeOut 1s ease forwards;
+}
+
+
+
+/* Fix horizontal scroll ONLY on mobile without hiding carousels ....................................................................*/
+@media (max-width: 991px) {
+  html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
+  /* Limit overflow fix only to the navbar and offcanvas, not global sections */
+  .navbar,
+  .offcanvas {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Keep other containers free so carousels can show fully */
+  .container,
+  section,
+  footer {
+    max-width: 100%;
+  }
+
+  /* Adjust contact button shape for smaller screens */
+  .contact-btn {
+    clip-path: polygon(
+      2% 0%, 98% 0%,
+      100% 15%, 100% 85%,
+      98% 100%, 2% 100%,
+      0% 85%, 0% 15%
+    );
+  }
+
+  /* Prevent 100vw overflow from backgrounds */
+  [class*="hero"],
+  [class*="banner"] {
+    width: 100% !important;
+  }
+}
+
+
+
+/* === iPad Mini, Air, Pro: 2x2 layout for vision boxes === */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1366px) {
+
+  .vision-section .vision-row {
+    display: flex !important;       /* override mobile flex-direction: column */
+    flex-wrap: wrap !important; 
+    flex-direction: row;            /* allow wrapping */
+    gap: 30px 40px;                 /* vertical & horizontal spacing */
+    justify-content: start;         /* center row */
+  }
+
+  .vision-section .vision-row > .col {
+    flex: 0 0 45%;                  /* 2 per row */
+    max-width: 45%;                 /* prevent clipping */
+    display: flex;
+    justify-content: center;
+  }
+
+  .vision-section .feature-box {
+    width: 100%;                    /* fill col */
+    max-width: 300px;               /* slightly smaller for iPad */
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .vision-section h1 {
+    font-size: 33.52px;             /* your requested size */
+    line-height: 1.2;               /* optional: good spacing */
+  }
+}
+
+/* === About Section Tick List Fully Centered on iPads === */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1366px) {
+
+  /* Center the row and content */
+  .about-section .row.imageReveal {
+    justify-content: center !important;
+  }
+
+  .about-section .col-md-6.offset-md-6 {
+    margin-left: 0 !important;         /* remove offset */
+    text-align: center !important;     /* center text inside */
+    display: flex !important;
+    flex-direction: column;
+    align-items: center !important;    /* center all content horizontally */
+    width: 90% !important;             /* use more screen width */
+    max-width: none !important;        /* remove Bootstrap max-width limit */
+  }
+
+  /* Paragraph full width */
+  .about-section p {
+    width: 100%;
+  }
+
+  /* Tick list: fully centered */
+  .about-section .tick-list {
+    display: inline-grid !important;   /* switch from grid to inline-grid */
+    grid-template-columns: repeat(2, auto); /* 2 columns if possible */
+    gap: 1rem 2rem;                    /* spacing between items */
+    justify-content: center;           /* center the whole list */
+    text-align: center;                /* center text + checkmark inside each li */
+    margin: 1.5rem 0 0 0;              /* spacing from paragraph */
+  }
+
+  /* Center button */
+  .about-section .btn-custom {
+    justify-content: center !important;
+    display: inline-block;
+  }
 }
